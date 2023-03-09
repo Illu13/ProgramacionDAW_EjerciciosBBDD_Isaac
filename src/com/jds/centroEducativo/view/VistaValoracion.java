@@ -41,7 +41,7 @@ public class VistaValoracion extends JPanel {
 	 * Create the panel.
 	 */
 	public VistaValoracion() {
-		setBounds(100, 100, 578, 375);
+		setBounds(100, 100, 586, 375);
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		GridBagLayout gbl_contentPane = new GridBagLayout();
@@ -360,7 +360,7 @@ public class VistaValoracion extends JPanel {
 			}
 		}
 		for (int i = 0; i < materia.size(); i++) {
-			if (vm.getIdEstudiante() == materia.get(i).getId()) {
+			if (vm.getIdMateria() == materia.get(i).getId()) {
 				Materia materiaASeleccionar = materia.get(i);
 				jcbMateria.setSelectedItem(materiaASeleccionar);
 				break;
@@ -399,7 +399,7 @@ public class VistaValoracion extends JPanel {
 			}
 		}
 		for (int i = 0; i < materia.size(); i++) {
-			if (vm.getIdEstudiante() == materia.get(i).getId()) {
+			if (vm.getIdMateria() == materia.get(i).getId()) {
 				Materia materiaASeleccionar = materia.get(i);
 				jcbMateria.setSelectedItem(materiaASeleccionar);
 				break;
@@ -438,7 +438,7 @@ public class VistaValoracion extends JPanel {
 			}
 		}
 		for (int i = 0; i < materia.size(); i++) {
-			if (vm.getIdEstudiante() == materia.get(i).getId()) {
+			if (vm.getIdMateria() == materia.get(i).getId()) {
 				Materia materiaASeleccionar = materia.get(i);
 				jcbMateria.setSelectedItem(materiaASeleccionar);
 				break;
@@ -476,7 +476,7 @@ public class VistaValoracion extends JPanel {
 			}
 		}
 		for (int i = 0; i < materia.size(); i++) {
-			if (vm.getIdEstudiante() == materia.get(i).getId()) {
+			if (vm.getIdMateria() == materia.get(i).getId()) {
 				Materia materiaASeleccionar = materia.get(i);
 				jcbMateria.setSelectedItem(materiaASeleccionar);
 				break;
