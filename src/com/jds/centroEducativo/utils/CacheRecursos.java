@@ -19,7 +19,7 @@ public abstract class CacheRecursos {
 	protected Object getResource(String name) {
 		Object res = resources.get(name);
 		if (res == null) {
-			res = loadResource("tutorialJava/capitulo8_AWT_SWING/res/" + name);
+			res = loadResource("com/jds/centroEducativo/utils/res/" + name);
 			resources.put (name,res);
 		}
 		return res;

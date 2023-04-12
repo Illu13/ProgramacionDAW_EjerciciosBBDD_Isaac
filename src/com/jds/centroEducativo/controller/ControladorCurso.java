@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jds.centroEducativo.model.Curso;
+import com.jds.centroEducativo.model.Materia;
 import com.jds.centroEducativo.utils.ConnectionManager;
 
 public class ControladorCurso {
@@ -42,6 +43,29 @@ public class ControladorCurso {
 		Connection conn = ConnectionManager.getConexion();
 		Statement s = (Statement) conn.createStatement();
 		ResultSet rs = s.executeQuery("select * from centroeducativo.curso");
+
+		List<Curso> cursos = new ArrayList<Curso>();
+
+		while (rs.next()) {
+			Curso curso = new Curso();
+			curso.setId(rs.getInt(1));
+			curso.setDescripcion(rs.getString(2));
+			cursos.add(curso);
+		}
+
+		conn.close();
+		rs.close();
+		s.close();
+		return cursos;
+	}
+	
+	public static List<Curso> allRegistersFromACurse(Materia m) throws SQLException {
+		
+		int idMateria = m.getCursoId();
+
+		Connection conn = ConnectionManager.getConexion();
+		Statement s = (Statement) conn.createStatement();
+		ResultSet rs = s.executeQuery("select c.id, c.descripcion from curso c JOIN materia m using (id) where c.id = " + idMateria);
 
 		List<Curso> cursos = new ArrayList<Curso>();
 

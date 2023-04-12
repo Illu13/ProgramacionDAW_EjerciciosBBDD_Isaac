@@ -218,6 +218,7 @@ public class ControladorValoracion {
 			Materia materia = new Materia();
 			materia.setId(rs.getInt(1));
 			materia.setNombre(rs.getString(2));
+			materia.setCursoId(rs.getInt(4));
 			estudianteMateria.add(materia);
 		}
 

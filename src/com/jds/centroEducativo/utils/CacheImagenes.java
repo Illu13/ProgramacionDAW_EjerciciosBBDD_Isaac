@@ -12,7 +12,6 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import utils.CacheRecursos;
 
 public class CacheImagenes extends CacheRecursos implements ImageObserver {
 

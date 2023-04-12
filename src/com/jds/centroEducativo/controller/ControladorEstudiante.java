@@ -33,6 +33,10 @@ public class ControladorEstudiante {
 				e.setDireccion(rs.getString(6));
 				e.setEmail(rs.getString(7));
 				e.setTelefono(rs.getString(8));
+				e.setIdSexo(rs.getInt(9));
+				e.setImagen(rs.getBytes(10));
+				e.setColorPreferido(rs.getString(11));
+
 				
 			}
 
@@ -63,6 +67,11 @@ public class ControladorEstudiante {
 				e.setDireccion(rs.getString(6));
 				e.setEmail(rs.getString(7));
 				e.setTelefono(rs.getString(8));
+				e.setIdSexo(rs.getInt(9));
+				e.setImagen(rs.getBytes(10));
+				e.setColorPreferido(rs.getString(11));
+
+
 				
 			}
 			conn.close();
@@ -98,6 +107,11 @@ public class ControladorEstudiante {
 				estu.setDireccion(rs.getString(6));
 				estu.setEmail(rs.getString(7));
 				estu.setTelefono(rs.getString(8));
+				estu.setIdSexo(rs.getInt(9));
+				estu.setImagen(rs.getBytes(10));
+				estu.setColorPreferido(rs.getString(11));
+
+
 				
 			}
 
@@ -122,7 +136,7 @@ public class ControladorEstudiante {
 
 			Statement s = (Statement) conn.createStatement();
 			ResultSet rs = s.executeQuery(
-					"select * from centroeducativo.profesor where id < " + idActual + " order by id desc limit " + 1);
+					"select * from centroeducativo.estudiante where id < " + idActual + " order by id desc limit " + 1);
 
 			Estudiante estu = new Estudiante();
 			while (rs.next()) {
@@ -134,6 +148,11 @@ public class ControladorEstudiante {
 				estu.setDireccion(rs.getString(6));
 				estu.setEmail(rs.getString(7));
 				estu.setTelefono(rs.getString(8));
+				estu.setIdSexo(rs.getInt(9));
+				estu.setImagen(rs.getBytes(10));
+				estu.setColorPreferido(rs.getString(11));
+
+
 				
 			}
 			conn.close();
@@ -158,7 +177,7 @@ public class ControladorEstudiante {
 
 			PreparedStatement ps = conn
 					.prepareStatement("update centroeducativo.estudiante set nombre = ?, apellido1 = ?, apellido2 = ?, "
-							+ "dni = ?, direccion = ?, email = ?, telefono = ?  where id = " + idActual);
+							+ "dni = ?, direccion = ?, email = ?, telefono = ?, idTipologiaSexo = ?, imagen = ?, colorPreferido = ?  where id = " + idActual);
 			ps.setString(1, e.getNombre());
 			ps.setString(2, e.getApellido1());
 			ps.setString(3, e.getApellido2());
@@ -166,6 +185,12 @@ public class ControladorEstudiante {
 			ps.setString(5, e.getDireccion());
 			ps.setString(6, e.getEmail());
 			ps.setString(7, e.getTelefono());
+			ps.setInt(8, e.getIdSexo());
+			ps.setBytes(9, e.getImagen());
+			ps.setString(10, e.getColorPreferido());
+
+
+
 
 			int filasAlteradas = ps.executeUpdate();
 
@@ -187,7 +212,7 @@ public class ControladorEstudiante {
 			e.setId(escogerPrimerIDDisponible());
 
 			PreparedStatement ps = conn
-					.prepareStatement("insert into centroeducativo.estudiante (id, nombre, apellido1, apellido2, dni, direccion, email, telefono) values (?, ?, ?, ?, ?, ?, ?, ?)");
+					.prepareStatement("insert into centroeducativo.estudiante (id, nombre, apellido1, apellido2, dni, direccion, email, telefono, idTipologiaSexo, imagen, colorPreferido) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 			ps.setInt(1, e.getId());
 			ps.setString(2, e.getNombre());
@@ -197,6 +222,11 @@ public class ControladorEstudiante {
 			ps.setString(6, e.getDireccion());
 			ps.setString(7, e.getEmail());
 			ps.setString(8, e.getTelefono());
+			ps.setInt(9, e.getIdSexo());
+			ps.setBytes(10, e.getImagen());
+			ps.setString(11, e.getColorPreferido());
+
+
 			int filasAlteradas = ps.executeUpdate();
 
 			ps.close();

@@ -33,7 +33,10 @@ public class ControladorProfesor {
 				p.setDireccion(rs.getString(6));
 				p.setEmail(rs.getString(7));
 				p.setTelefono(rs.getString(8));
-				
+				p.setIdSexo(rs.getInt(9));
+				p.setImagen(rs.getBytes(10));
+				p.setColorPreferido(rs.getString(11));
+
 			}
 
 			conn.close();
@@ -64,6 +67,12 @@ public class ControladorProfesor {
 				p.setDireccion(rs.getString(6));
 				p.setEmail(rs.getString(7));
 				p.setTelefono(rs.getString(8));
+				p.setIdSexo(rs.getInt(9));
+				p.setImagen(rs.getBytes(10));
+				p.setColorPreferido(rs.getString(11));
+
+
+
 				
 			}
 			conn.close();
@@ -99,6 +108,12 @@ public class ControladorProfesor {
 				prof.setDireccion(rs.getString(6));
 				prof.setEmail(rs.getString(7));
 				prof.setTelefono(rs.getString(8));
+				prof.setIdSexo(rs.getInt(9));
+				prof.setImagen(rs.getBytes(10));
+				prof.setColorPreferido(rs.getString(11));
+
+
+
 				
 			}
 
@@ -135,6 +150,11 @@ public class ControladorProfesor {
 				prof.setDireccion(rs.getString(6));
 				prof.setEmail(rs.getString(7));
 				prof.setTelefono(rs.getString(8));
+				prof.setIdSexo(rs.getInt(9));
+				prof.setImagen(rs.getBytes(10));
+				prof.setColorPreferido(rs.getString(11));
+
+
 				
 			}
 			conn.close();
@@ -159,7 +179,7 @@ public class ControladorProfesor {
 
 			PreparedStatement ps = conn
 					.prepareStatement("update centroeducativo.profesor set nombre = ?, apellido1 = ?, apellido2 = ?, "
-							+ "dni = ?, direccion = ?, email = ?, telefono = ?  where id = " + idActual);
+							+ "dni = ?, direccion = ?, email = ?, telefono = ?, idTipologiaSexo = ?, imagen = ?, colorPreferido = ?  where id = " + idActual);
 			ps.setString(1, p.getNombre());
 			ps.setString(2, p.getApellido1());
 			ps.setString(3, p.getApellido2());
@@ -167,6 +187,10 @@ public class ControladorProfesor {
 			ps.setString(5, p.getDireccion());
 			ps.setString(6, p.getEmail());
 			ps.setString(7, p.getTelefono());
+			ps.setInt(8, p.getIdSexo());
+			ps.setBytes(9, p.getImagen());
+			ps.setString(10, p.getColorPreferido());
+
 
 			int filasAlteradas = ps.executeUpdate();
 
@@ -188,7 +212,7 @@ public class ControladorProfesor {
 			p.setId(escogerPrimerIDDisponible());
 
 			PreparedStatement ps = conn
-					.prepareStatement("insert into centroeducativo.profesor (id, nombre, apellido1, apellido2, dni, direccion, email, telefono) values (?, ?, ?, ?, ?, ?, ?, ?)");
+					.prepareStatement("insert into centroeducativo.profesor (id, nombre, apellido1, apellido2, dni, direccion, email, telefono, idTipologiaSexo, imagen, colorPreferido) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 			ps.setInt(1, p.getId());
 			ps.setString(2, p.getNombre());
@@ -198,6 +222,12 @@ public class ControladorProfesor {
 			ps.setString(6, p.getDireccion());
 			ps.setString(7, p.getEmail());
 			ps.setString(8, p.getTelefono());
+			ps.setInt(9, p.getIdSexo());
+			ps.setBytes(10, p.getImagen());
+			ps.setString(11, p.getColorPreferido());
+
+
+
 			int filasAlteradas = ps.executeUpdate();
 
 			ps.close();
