@@ -28,5 +28,19 @@ public class ControladorProfesor {
 		return locs;
 
 	}
+	
+	public static Profesor findById(int idM) {
+
+		EntityManager em = entityManagerFactory.createEntityManager();
+
+		Query q = em.createNativeQuery("SELECT * FROM profesor where id = " + idM + ";", Profesor.class);
+
+		Profesor locs =  (Profesor) q.getSingleResult();
+
+		em.close();
+
+		return locs;
+
+	}
 
 }

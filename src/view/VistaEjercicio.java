@@ -110,7 +110,7 @@ public class VistaEjercicio extends JFrame {
 				p.removeAll();
 				Materia m = (Materia) jcbMateria.getSelectedItem();
 				Profesor prof = (Profesor) jcbProfesor.getSelectedItem();
-				p.actualizarAlumnos(m.getId(), prof.getId());
+				p.actualizarAlumno2(m.getId(), prof.getId());
 				p.repaint();
 				p.revalidate();
 			
@@ -132,8 +132,10 @@ public class VistaEjercicio extends JFrame {
 		btnNewButton_1 = new JButton("Actualizar notas");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Materia m = (Materia) jcbMateria.getSelectedItem();
+				Profesor prof = (Profesor) jcbProfesor.getSelectedItem();
 
-				p.actualizarValoracion();
+				p.actualizarValoracion(prof.getId(), m.getId());
 			
 			}
 		});

@@ -52,6 +52,11 @@ public class Estudiante implements Serializable {
 	public int getId() {
 		return this.id;
 	}
+	
+	public String toString() {
+		return nombre;
+	}
+
 
 	public void setId(int id) {
 		this.id = id;

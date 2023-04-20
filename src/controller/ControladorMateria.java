@@ -28,5 +28,20 @@ public class ControladorMateria {
 		return locs;
 
 	}
+	
+	
+	public static Materia findById(int idM) {
+
+		EntityManager em = entityManagerFactory.createEntityManager();
+
+		Query q = em.createNativeQuery("SELECT * FROM materia where id = " + idM + ";", Materia.class);
+
+		Materia locs =  (Materia) q.getSingleResult();
+
+		em.close();
+
+		return locs;
+
+	}
 
 }

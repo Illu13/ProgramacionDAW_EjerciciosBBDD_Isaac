@@ -11,21 +11,41 @@ import model.Estudiante;
 import model.Materia;
 
 public class ControladorEstudiante {
-	
-	private static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("centroeducativo");
 
-	
-	public static Estudiante findById (int idE) {
+	private static EntityManagerFactory entityManagerFactory = Persistence
+			.createEntityManagerFactory("centroeducativo");
+
+	public static Estudiante findById(int idE) {
 
 		EntityManager em = entityManagerFactory.createEntityManager();
 
 		Query q = em.createNativeQuery("SELECT * FROM estudiante where id = ?", Estudiante.class);
 		q.setParameter(1, idE);
 		Estudiante es = (Estudiante) q.getSingleResult();
-		
+
+		em.close();
+
+		return es;
+	}
+	
+
+
+	
+
+	public static List<Estudiante> findAll() {
+
+
+		EntityManager em = entityManagerFactory.createEntityManager();
+
+		Query q = em.createNativeQuery("SELECT * FROM estudiante;", Estudiante.class);
+
+		List<Estudiante> est = (List<Estudiante>) q.getResultList();
+
+		 
 		em.close();
 		
-		return es;
+		return est;
+
 	}
 
 }

@@ -23,6 +23,10 @@ public class Valoracionmateria implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="idEstudiante")
 	private Estudiante estudiante;
+	
+	public String toString() {
+		return estudiante.getNombre();
+	}
 
 	//bi-directional many-to-one association to Materia
 	@ManyToOne
