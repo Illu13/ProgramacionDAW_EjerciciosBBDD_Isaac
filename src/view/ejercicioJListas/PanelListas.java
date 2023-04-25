@@ -204,7 +204,7 @@ public class PanelListas extends JPanel {
 		for (int i = 0; i < listModelEstudiantesSel.getSize(); i++) {
 
 			Estudiante estu = listModelEstudiantesSel.get(i);
-			Valoracionmateria va = ControladorValoracionMateria.findByIdsEstu(estu.getId(), mat.getId(), prof.getId());
+			Valoracionmateria va = ControladorValoracionMateria.findByIdsEstu(mat.getId(), prof.getId(), estu.getId());
 			if (va != null) {
 				va.setValoracion(nota);
 				ControladorValoracionMateria.modificar(va);

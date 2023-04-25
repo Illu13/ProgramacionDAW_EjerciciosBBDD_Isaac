@@ -25,17 +25,19 @@ import java.awt.event.ActionEvent;
 
 public class VistaEjercicio extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JComboBox<Materia> jcbMateria;
 	JComboBox<Profesor> jcbProfesor;
 	private List<Materia> materias;
 	private List<Profesor> profesores;
-	private List<Integer> notas;
 
 	private JPanel contentPane;
 	private JButton btnNewButton_1;
 	private JComboBox<Float> jcbNotas;
 	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
 	private PanelListas p;
 
 
