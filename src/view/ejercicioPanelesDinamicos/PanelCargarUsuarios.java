@@ -1,4 +1,4 @@
-package view;
+package view.ejercicioPanelesDinamicos;
 
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;

@@ -15,6 +15,7 @@ public class Valoracionmateria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
 	private float valoracion;
@@ -25,7 +26,7 @@ public class Valoracionmateria implements Serializable {
 	private Estudiante estudiante;
 	
 	public String toString() {
-		return estudiante.getNombre();
+		return this.estudiante.getNombre() + " " + this.valoracion;
 	}
 
 	//bi-directional many-to-one association to Materia

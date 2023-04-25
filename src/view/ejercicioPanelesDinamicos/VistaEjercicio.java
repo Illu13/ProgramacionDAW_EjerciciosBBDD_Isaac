@@ -1,4 +1,4 @@
-package view;
+package view.ejercicioPanelesDinamicos;
 
 import java.awt.EventQueue;
 
