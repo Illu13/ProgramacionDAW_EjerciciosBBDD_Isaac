@@ -142,7 +142,6 @@ public class PanelCargarUsuarios extends JPanel {
 
 	public Valoracionmateria actualizarValoracion(int idP, int idM) {
 		float nota;
-		int valoracionElegida = 0;
 		int estudiante = 0;
 
 		for (JTextField jtf : campos) {
@@ -151,15 +150,15 @@ public class PanelCargarUsuarios extends JPanel {
 			} else {
 				nota = Float.parseFloat(jtf.getText());
 				try {
-					Valoracionmateria vmCambio = valos.get(valoracionElegida);
+					Valoracionmateria vmCambio = valos.get(estudiante);
 					if (nota != vmCambio.getValoracion()) {
+						vmCambio.setId(valos.get(estudiante).getId());
 						vmCambio.setValoracion(nota);
 						ControladorValoracionMateria.modificar(vmCambio);
 
 					}
 				} catch (ArrayIndexOutOfBoundsException ex) {
 					Valoracionmateria nueva = new Valoracionmateria();
-					nueva.setId(ControladorValoracionMateria.findMaxId());
 					nueva.setMateria(ControladorMateria.findById(idM));
 					nueva.setProfesor(ControladorProfesor.findById(idP));
 					nueva.setValoracion(nota);
@@ -170,7 +169,6 @@ public class PanelCargarUsuarios extends JPanel {
 				}
 
 			}
-			valoracionElegida++;
 			estudiante++;
 		}
 

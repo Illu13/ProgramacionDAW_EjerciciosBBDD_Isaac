@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import model.Estudiante;
 import model.Materia;
+import model.Valoracionmateria;
 
 public class ControladorEstudiante {
 
@@ -28,7 +29,45 @@ public class ControladorEstudiante {
 		return es;
 	}
 	
+	public static int lastId() {
 
+		EntityManager em = entityManagerFactory.createEntityManager();
+
+		Query q = em.createNativeQuery("SELECT max(id) as ID FROM estudiante;", Estudiante.class);
+		Estudiante es = (Estudiante) q.getSingleResult();
+
+		em.close();
+
+		return es.getId() + 1;
+	}
+	
+	public static void modificar(Estudiante l) {
+
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(l);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public static void insertar(Estudiante l) {
+
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(l);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public static void eliminar(Estudiante l) {
+
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		l = em.merge(l);
+		em.remove(l);
+		em.getTransaction().commit();
+		em.close();
+	}
 
 	
 

@@ -30,6 +30,10 @@ public class Tipologiasexo implements Serializable {
 
 	public Tipologiasexo() {
 	}
+	
+	public String toString() {
+		return this.descripcion;
+	}
 
 	public int getId() {
 		return this.id;
